@@ -7,7 +7,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/goharbor/harbor/src/lib/log"
+	"github.com/jasgeo75/harbor/src/lib/log"
 )
 
 // HandlerIndexer is setup the relationship between the handler type and

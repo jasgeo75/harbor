@@ -1,8 +1,8 @@
 package model
 
 import (
-	"github.com/goharbor/harbor/src/common/models"
-	"github.com/goharbor/harbor/src/controller/event/model"
+	"github.com/jasgeo75/harbor/src/common/models"
+	"github.com/jasgeo75/harbor/src/controller/event/model"
 )
 
 // HookEvent is hook related event data to publish

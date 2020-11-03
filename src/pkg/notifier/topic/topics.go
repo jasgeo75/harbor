@@ -1,10 +1,10 @@
 package topic
 
 import (
-	"github.com/goharbor/harbor/src/lib/log"
-	"github.com/goharbor/harbor/src/pkg/notifier"
-	"github.com/goharbor/harbor/src/pkg/notifier/handler/notification"
-	"github.com/goharbor/harbor/src/pkg/notifier/model"
+	"github.com/jasgeo75/harbor/src/lib/log"
+	"github.com/jasgeo75r/harbor/src/pkg/notifier"
+	"github.com/jasgeo75/harbor/src/pkg/notifier/handler/notification"
+	"github.com/jasgeo75/harbor/src/pkg/notifier/model"
 )
 
 // Subscribe topics
@@ -12,6 +12,7 @@ func init() {
 	handlersMap := map[string][]notifier.NotificationHandler{
 		model.WebhookTopic: {&notification.HTTPHandler{}},
 		model.SlackTopic:   {&notification.SlackHandler{}},
+		model.MSTeamsTopic:   {&notification.MSTeamsHandler{}},
 	}
 
 	for t, handlers := range handlersMap {

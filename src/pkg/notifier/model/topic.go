@@ -6,6 +6,8 @@ const (
 	WebhookTopic = "http"
 	// SlackTopic is topic for sending slack payload
 	SlackTopic = "slack"
+	// MSTeamsTopic is topic for sending teams payload
+	MSTeamsTopic = "teams"
 	// EmailTopic is topic for sending email payload
 	EmailTopic = "email"
 )

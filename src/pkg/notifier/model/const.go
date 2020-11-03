@@ -4,4 +4,5 @@ package model
 const (
 	NotifyTypeHTTP  = "http"
 	NotifyTypeSlack = "slack"
+	NotifyTypeMSTeams = "teams"
 )

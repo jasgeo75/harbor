@@ -5,10 +5,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/goharbor/harbor/src/common/job/models"
-	"github.com/goharbor/harbor/src/jobservice/job"
-	"github.com/goharbor/harbor/src/pkg/notification"
-	"github.com/goharbor/harbor/src/pkg/notifier/model"
+	"github.com/jasgeo75/harbor/src/common/job/models"
+	"github.com/jasgeo75/harbor/src/jobservice/job"
+	"github.com/jasgeo75/harbor/src/pkg/notification"
+	"github.com/jasgeo75/harbor/src/pkg/notifier/model"
 )
 
 // HTTPHandler preprocess http event data and start the hook processing
