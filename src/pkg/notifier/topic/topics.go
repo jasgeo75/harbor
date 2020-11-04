@@ -2,7 +2,7 @@ package topic
 
 import (
 	"github.com/jasgeo75/harbor/src/lib/log"
-	"github.com/jasgeo75r/harbor/src/pkg/notifier"
+	"github.com/jasgeo75/harbor/src/pkg/notifier"
 	"github.com/jasgeo75/harbor/src/pkg/notifier/handler/notification"
 	"github.com/jasgeo75/harbor/src/pkg/notifier/model"
 )
