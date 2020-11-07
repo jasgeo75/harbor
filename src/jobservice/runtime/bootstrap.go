@@ -265,6 +265,7 @@ func (bs *Bootstrap) loadAndRunRedisWorkerPool(
 			scheduler.JobNameScheduler: (*scheduler.PeriodicJob)(nil),
 			job.WebhookJob:             (*notification.WebhookJob)(nil),
 			job.SlackJob:               (*notification.SlackJob)(nil),
+			job.MSTeamsJob:             (*notification.MSTeamsJob)(nil),
 			job.P2PPreheat:             (*preheat.Job)(nil),
 		}); err != nil {
 		// exit

@@ -40,7 +40,8 @@ describe('WebhookComponent', () => {
         ],
         "notify_type": [
             "http",
-            "slack"
+            "slack",
+            "msteams"
         ]
     };
     const mockedWehook: Webhook = {

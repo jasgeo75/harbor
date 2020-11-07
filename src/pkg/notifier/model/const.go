@@ -2,6 +2,7 @@ package model
 
 // const definitions
 const (
-	NotifyTypeHTTP  = "http"
-	NotifyTypeSlack = "slack"
+	NotifyTypeHTTP    = "http"
+	NotifyTypeSlack   = "slack"
+	NotifyTypeMSTeams = "msteams"
 )

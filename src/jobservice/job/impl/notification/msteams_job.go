@@ -14,21 +14,21 @@ import (
 	"github.com/goharbor/harbor/src/lib/errors"
 )
 
-// SlackJob implements the job interface, which send notification to slack by slack incoming webhooks.
-type SlackJob struct {
+// MSTeamsJob implements the job interface, which send notification to msteams by msteams incoming webhooks.
+type MSTeamsJob struct {
 	client *http.Client
 	logger logger.Interface
 }
 
 // MaxFails returns that how many times this job can fail.
-func (sj *SlackJob) MaxFails() (result uint) {
+func (sj *MSTeamsJob) MaxFails() (result uint) {
 	// Default max fails count is 10, and its max retry interval is around 3h
 	// Large enough to ensure most situations can notify successfully
 	result = 10
 	if maxFails, exist := os.LookupEnv(maxFails); exist {
 		mf, err := strconv.ParseUint(maxFails, 10, 32)
 		if err != nil {
-			logger.Warningf("Fetch slack job maxFails error: %s", err.Error())
+			logger.Warningf("Fetch msteams job maxFails error: %s", err.Error())
 			return result
 		}
 		result = uint(mf)
@@ -37,20 +37,20 @@ func (sj *SlackJob) MaxFails() (result uint) {
 }
 
 // MaxCurrency is implementation of same method in Interface.
-func (sj *SlackJob) MaxCurrency() uint {
+func (sj *MSTeamsJob) MaxCurrency() uint {
 	return 1
 }
 
 // ShouldRetry ...
-func (sj *SlackJob) ShouldRetry() bool {
+func (sj *MSTeamsJob) ShouldRetry() bool {
 	return true
 }
 
 // Validate implements the interface in job/Interface
-func (sj *SlackJob) Validate(params job.Parameters) error {
+func (sj *MSTeamsJob) Validate(params job.Parameters) error {
 	if params == nil {
 		// Params are required
-		return errors.New("missing parameter of slack job")
+		return errors.New("missing parameter of msteams job")
 	}
 
 	payload, ok := params["payload"]
@@ -74,7 +74,7 @@ func (sj *SlackJob) Validate(params job.Parameters) error {
 }
 
 // Run implements the interface in job/Interface
-func (sj *SlackJob) Run(ctx job.Context, params job.Parameters) error {
+func (sj *MSTeamsJob) Run(ctx job.Context, params job.Parameters) error {
 	if err := sj.init(ctx, params); err != nil {
 		return err
 	}
@@ -84,13 +84,13 @@ func (sj *SlackJob) Run(ctx job.Context, params job.Parameters) error {
 		sj.logger.Error(err)
 	}
 
-	// Wait a second for slack rate limit, refer to https://api.slack.com/docs/rate-limits
+	// Wait a second for msteams rate limit, refer to https://api.msteams.com/docs/rate-limits
 	time.Sleep(time.Second)
 	return err
 }
 
-// init slack job
-func (sj *SlackJob) init(ctx job.Context, params map[string]interface{}) error {
+// init msteams job
+func (sj *MSTeamsJob) init(ctx job.Context, params map[string]interface{}) error {
 	sj.logger = ctx.GetLogger()
 
 	// default use secure transport
@@ -104,8 +104,8 @@ func (sj *SlackJob) init(ctx job.Context, params map[string]interface{}) error {
 	return nil
 }
 
-// execute slack job
-func (sj *SlackJob) execute(params map[string]interface{}) error {
+// execute msteams job
+func (sj *MSTeamsJob) execute(params map[string]interface{}) error {
 	payload := params["payload"].(string)
 	address := params["address"].(string)
 
@@ -121,7 +121,7 @@ func (sj *SlackJob) execute(params map[string]interface{}) error {
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-		return fmt.Errorf("slack job(target: %s) response code is %d", address, resp.StatusCode)
+		return fmt.Errorf("msteams job(target: %s) response code is %d", address, resp.StatusCode)
 	}
 	return nil
 }

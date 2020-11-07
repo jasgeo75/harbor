@@ -95,7 +95,7 @@ func (m *DefaultManager) Delete(policyID int64) error {
 func (m *DefaultManager) Test(policy *models.NotificationPolicy) error {
 	for _, target := range policy.Targets {
 		switch target.Type {
-		case model.NotifyTypeHTTP, model.NotifyTypeSlack:
+		case model.NotifyTypeHTTP, model.NotifyTypeSlack, model.NotifyTypeMSTeams:
 			return m.policyHTTPTest(target.Address, target.SkipCertVerify)
 		default:
 			return fmt.Errorf("invalid policy target type: %s", target.Type)

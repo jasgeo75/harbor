@@ -23,6 +23,13 @@ describe('LastTriggerComponent', () => {
       event_type: 'pullImage',
       creation_time: null,
       last_trigger_time: null
+    },
+    {
+      policy_name: 'msteams',
+      enabled: true,
+      event_type: 'pullImage',
+      creation_time: null,
+      last_trigger_time: null
     }
   ];
   const mockWebhookService = {

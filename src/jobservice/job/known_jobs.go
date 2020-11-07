@@ -36,6 +36,8 @@ const (
 	WebhookJob = "WEBHOOK"
 	// SlackJob : the name of the slack job in job service
 	SlackJob = "SLACK"
+	// MSTeamsJob : the name of the slack job in job service
+	MSTeamsJob = "MSTEAMS"
 	// Retention : the name of the retention job
 	Retention = "RETENTION"
 	// P2PPreheat : the name of the P2P preheat job

@@ -42,7 +42,7 @@ func Init() {
 
 	SupportedNotifyTypes = make(map[string]struct{})
 
-	initSupportedNotifyType(model.NotifyTypeHTTP, model.NotifyTypeSlack)
+	initSupportedNotifyType(model.NotifyTypeHTTP, model.NotifyTypeSlack, model.NotifyTypeMSTeams)
 
 	log.Info("notification initialization completed")
 }

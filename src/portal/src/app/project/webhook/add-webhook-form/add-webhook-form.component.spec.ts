@@ -70,7 +70,8 @@ describe('AddWebhookFormComponent', () => {
         ],
         "notify_type": [
             "http",
-            "slack"
+            "slack",
+            "msteams"
         ]
     };
 
