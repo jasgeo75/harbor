@@ -21,11 +21,11 @@ const (
     "@context": "https://schema.org/extensions",
     "summary": "Harbor Notification",
     "themeColor": "0078D7",
-    "title": "**SCAN_SUCCESS**",
+    "title": "{{.Type}}",
     "sections": [
         {
             "activityTitle": "registry.dev.finworks.com/cbpm/cbpm-app",
-            "activitySubtitle": "3/11/2020, 12:00pm",           
+            "activitySubtitle": "<!date^{{.OccurAt}}^{date} at {time}|February 18th, 2014 at 6:39 AM PST>",           
             "activityImage": "https://branding.cncf.io/img/projects/harbor/icon/color/harbor-icon-color.png",
             "startGroup": true,
             "facts": [ 
@@ -172,6 +172,9 @@ func (s *MSTeamsHandler) convert(payLoad *model.Payload) (string, error) {
 	}
 	data["EventData"] = "```" + strings.Replace(string(eventData), `"`, `\"`, -1) + "```"
 
+	// DEBUG
+	fmt.Print(data["EventData"])
+	
 	st, _ := template.New("msteams").Parse(MSTeamsBodyTemplate)
 	var msteamsBuf bytes.Buffer
 	if err := st.Execute(&msteamsBuf, data); err != nil {
